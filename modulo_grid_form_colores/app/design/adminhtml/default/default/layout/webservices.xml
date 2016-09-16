@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <webservices_adminhtml_webservicesbackend_index>
+	<reference name="content">
+	  <block type="webservices/adminhtml_webservicesbackend" name="webservicesbackend" template="webservices/webservicesbackend.phtml"/>
+	</reference>
+  </webservices_adminhtml_webservicesbackend_index>
+</layout>

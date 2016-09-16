@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Tecnocom_Tickets>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Tecnocom_Tickets>
+    </modules>
+</config>

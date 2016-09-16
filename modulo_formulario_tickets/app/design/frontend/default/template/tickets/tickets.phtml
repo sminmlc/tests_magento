@@ -1,0 +1,37 @@
+<form action="<?php echo $this->getUrl('tickets/') ?>index/send" method="POST" enctype="multipart/form-data" id="tickets-form-validate" name="ticketsForm">
+        <div id="select-incidence-form" class="fieldset">
+            <h2 class="legend create_new_ticket">Selección</h2>
+            <p class="required">* Campos requeridos</p>
+            <ul class="form-list">
+                    <li class="wide-gi">
+                        <label for="order_id" class="required">Order</label>
+                        <div class="input-box">
+                            <?php echo $this->misPedidos(); ?>
+                        </div>
+                    </li>
+                    <li class="wide-gi" style="margin-left: 70px;">
+                        <label for="incidencia_id" class="required">Incidencias</label>
+                        <div class="input-box">
+                            <select name="incidencia_type" id="incidencia_type" class="select-box-gi">
+                                <option value="">-- Selecciona una incidencia --</option>            
+                                <option value="copia_factura">Solicitar copia de la factura</option>
+                                <option value="modificar_datos_envio">[2]:Modificar datos de envío</option>
+                                <option value="modificar_datos_facturacion">Modificar datos de facturación</option>
+                                <option value="retraso_entrega">Retraso en la entrega</option>
+                                <option value="incumplimiento_sat">Incumplimiento del S.A.T</option>
+                                <option value="entrega_incompleta">Entrega incompleta</option>
+                                <option value="producto_defectuoso">Producto defectuoso</option>
+                                <option value="producto_diferente">Producto diferente al solicitado</option>
+                                <option value="anular_solicitud">Anular Solicitud</option>
+                                <option value="devolucion">Solicitar devolución</option>
+                            </select>
+                        </div>
+                    </li>
+            </ul>
+            <input name="customer" id="customer" type="hidden" value="<?php echo $this->usuario()->getName(); ?>">
+            <textarea name="comentario" id="comentario"></textarea>
+        </div>
+        <div class="buttons-set">
+            <button id="env-ticket" type="submit" title="Enviar Ticket" class="button"><span><span>Enviar Ticket</span></span></button>
+        </div>
+    </form>

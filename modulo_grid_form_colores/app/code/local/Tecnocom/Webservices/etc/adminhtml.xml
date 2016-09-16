@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+                <tecnocom_webservices_errors translate="title" module="tecnocom_webservices">
+                    <title>EWSlog</title>
+                    <action>adminhtml/errors</action>
+                    <sort_order>100</sort_order>
+                </tecnocom_webservices_errors>
+            
+    </menu>
+     
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <!-- Same as above, but instead of referencing the config/menu node, you reference the acl/resources node of adminhtml.xml -->
+                    
+                            <!-- Keep the same naming convention as above -->
+                            <tecnocom_webservices_errors>
+                                <!-- This is how the ACL text will be displayed on System > Permissions > Roles > Role > Role Resources -->
+                                <title>EWSlog</title>
+                            </tecnocom_webservices_errors>
+                     
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

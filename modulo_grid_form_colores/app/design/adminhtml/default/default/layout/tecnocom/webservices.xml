@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout>
+    <!-- Here, we reference the XML node path of our route -->
+    <adminhtml_errors_index>
+        <reference name="content">
+            <!-- We also reference our block by namespacename_modulename/adminhtml_controllername, and name it uniquely -->
+            <block type="tecnocom_webservices/adminhtml_errors" name="tecnocom_webservices_errors" />
+        </reference>
+    </adminhtml_errors_index>
+</layout>

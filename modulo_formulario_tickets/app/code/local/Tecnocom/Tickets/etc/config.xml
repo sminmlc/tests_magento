@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Tecnocom_Tickets>
+            <version>1.0.0</version>
+        </Tecnocom_Tickets>
+    </modules>
+    <global>
+        <helpers>
+            <tecnocom_tickets>
+                <class>Tecnocom_Tickets_Helper</class>
+            </tecnocom_tickets>
+        </helpers>
+        <models>
+            <tecnocom_tickets>
+                <class>Tecnocom_Tickets_Model</class>
+            </tecnocom_tickets>
+        </models>
+        <blocks>
+            <tecnocom_tickets>
+                <class>Tecnocom_Tickets_Block</class>
+            </tecnocom_tickets>
+        </blocks>
+    </global>
+	<frontend>
+        <routers>
+            <tecnocom_tickets>
+                <use>standard</use>
+                <args>
+                    <module>Tecnocom_Tickets</module>
+                    <frontName>tickets</frontName>
+                </args>
+            </tecnocom_tickets>
+        </routers>
+		<layout>
+			<updates>
+				<tecnocom_tickets>
+					<file>tickets.xml</file>
+				</tecnocom_tickets>
+			</updates>
+		</layout>
+    </frontend>
+</config>
