@@ -1,12 +1,12 @@
 <?php
-class Tecnocom_Webservices_Block_Adminhtml_Errors_Edit extends Mage_Adminhtml_Block_Widget_Form_Container
+class Sminmlc_Webservices_Block_Adminhtml_Errors_Edit extends Mage_Adminhtml_Block_Widget_Form_Container
 {
     /**
      * Init class
      */
     public function __construct()
     {  
-        $this->_blockGroup = 'tecnocom_webservices';
+        $this->_blockGroup = 'sminmlc_webservices';
         $this->_controller = 'adminhtml_errors';
      
         parent::__construct();
@@ -28,7 +28,7 @@ class Tecnocom_Webservices_Block_Adminhtml_Errors_Edit extends Mage_Adminhtml_Bl
      */
     public function getHeaderText()
     {  
-        if (Mage::registry('tecnocom_webservices')->getId()) {
+        if (Mage::registry('sminmlc_webservices')->getId()) {
             return $this->__('Edit Errors');
         }  
         else {
