@@ -9,8 +9,8 @@
 $installer = $this;
 $installer->startSetup();
 $installer->run("
-DROP TABLE IF EXISTS {$this->getTable('tecnocom_webservices_log_error')};
-CREATE TABLE {$this->getTable('tecnocom_webservices_log_error')} (
+DROP TABLE IF EXISTS {$this->getTable('sminmlc_webservices_log_error')};
+CREATE TABLE {$this->getTable('sminmlc_webservices_log_error')} (
   `id` int(11) unsigned NOT NULL auto_increment,
   `id_error` varchar(255) NOT NULL,
   `priority` varchar(15) NOT NULL,
