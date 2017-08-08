@@ -28,14 +28,14 @@
 <layout version="0.1.0">
     <customer_account>
         <reference name="customer_account_navigation">
-            <action method="addLink" translate="label" module="tecnocom_tickets"><name>tickets</name><path>tickets/index</path><label>Tickets</label></action>
+            <action method="addLink" translate="label" module="sminmlc_tickets"><name>tickets</name><path>tickets/index</path><label>Tickets</label></action>
         </reference>
     </customer_account>
     
-    <tecnocom_tickets_index_index>
+    <sminmlc_tickets_index_index>
         <update handle="customer_account" />
         <reference name="my.account.wrapper">
-            <block type="tecnocom_tickets/tickets" name="tecnocom_tickets_content" template="tickets/tickets.phtml"/>            
+            <block type="sminmlc_tickets/tickets" name="sminmlc_tickets_content" template="tickets/tickets.phtml"/>            
         </reference>
-    </tecnocom_tickets_index_index>
+    </sminmlc_tickets_index_index>
 </layout>
