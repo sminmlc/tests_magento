@@ -1,9 +1,9 @@
 <?php
-class Tecnocom_Webservices_Block_Adminhtml_Errors extends Mage_Adminhtml_Block_Widget_Grid_Container
+class Sminmlc_Webservices_Block_Adminhtml_Errors extends Mage_Adminhtml_Block_Widget_Grid_Container
 {
     public function __construct()
     {
-        $this->_blockGroup = 'tecnocom_webservices';
+        $this->_blockGroup = 'sminmlc_webservices';
         $this->_controller = 'adminhtml_errors';
         $this->_headerText = $this->__('Webservices errors');
         
