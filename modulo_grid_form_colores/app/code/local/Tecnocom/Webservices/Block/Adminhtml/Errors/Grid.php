@@ -1,5 +1,5 @@
 <?php
-class Tecnocom_Webservices_Block_Adminhtml_Errors_Grid extends Mage_Adminhtml_Block_Widget_Grid
+class Sminmlc_Webservices_Block_Adminhtml_Errors_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
     public function __construct()
     {
@@ -7,7 +7,7 @@ class Tecnocom_Webservices_Block_Adminhtml_Errors_Grid extends Mage_Adminhtml_Bl
          
         // Set some defaults for our grid
         $this->setDefaultSort('id');
-        $this->setId('tecnocom_webservices_errors_grid');
+        $this->setId('sminmlc_webservices_errors_grid');
         $this->setDefaultDir('desc');
         $this->setSaveParametersInSession(true);
     }
@@ -15,7 +15,7 @@ class Tecnocom_Webservices_Block_Adminhtml_Errors_Grid extends Mage_Adminhtml_Bl
     protected function _getCollectionClass()
     {
         // This is the model we are using for the grid
-        return 'tecnocom_webservices/webservices_collection';
+        return 'sminmlc_webservices/webservices_collection';
     }
      
     protected function _prepareCollection()
@@ -42,7 +42,7 @@ class Tecnocom_Webservices_Block_Adminhtml_Errors_Grid extends Mage_Adminhtml_Bl
             array(
                 'header'=> $this->__('Order id'),
                 'index' => 'increment_id',
-                'renderer'=> 'Tecnocom_Webservices_Block_Adminhtml_Errors_Grid_Renderer_Orderidcolumn',
+                'renderer'=> 'Sminmlc_Webservices_Block_Adminhtml_Errors_Grid_Renderer_Orderidcolumn',
             )
         );
         
@@ -56,7 +56,7 @@ class Tecnocom_Webservices_Block_Adminhtml_Errors_Grid extends Mage_Adminhtml_Bl
             array(
                 'header'=> $this->__('Priority'),
                 'index' => 'priority',
-                'renderer'=> 'Tecnocom_Webservices_Block_Adminhtml_Errors_Grid_Renderer_Prioritycolumn',
+                'renderer'=> 'Sminmlc_Webservices_Block_Adminhtml_Errors_Grid_Renderer_Prioritycolumn',
             )
         );
         $this->addColumn('ws_method',
