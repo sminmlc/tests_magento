@@ -1,5 +1,5 @@
 <?php
-class Tecnocom_Webservices_Block_Adminhtml_Errors_Edit_Form extends Mage_Adminhtml_Block_Widget_Form
+class Sminmlc_Webservices_Block_Adminhtml_Errors_Edit_Form extends Mage_Adminhtml_Block_Widget_Form
 {
     /**
      * Init class
@@ -8,7 +8,7 @@ class Tecnocom_Webservices_Block_Adminhtml_Errors_Edit_Form extends Mage_Adminht
     {  
         parent::__construct();
      
-        $this->setId('tecnocom_webservices_errors_form');
+        $this->setId('sminmlc_webservices_errors_form');
         $this->setTitle($this->__('Errors Information'));
     }  
      
@@ -19,7 +19,7 @@ class Tecnocom_Webservices_Block_Adminhtml_Errors_Edit_Form extends Mage_Adminht
      */
     protected function _prepareForm()
     {  
-        $model = Mage::registry('tecnocom_webservices');
+        $model = Mage::registry('sminmlc_webservices');
      
         $form = new Varien_Data_Form(array(
             'id'        => 'edit_form',
