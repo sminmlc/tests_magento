@@ -1,5 +1,5 @@
 <?php
-class Tecnocom_Webservices_Adminhtml_ErrorsController extends Mage_Adminhtml_Controller_Action
+class Sminmlc_Webservices_Adminhtml_ErrorsController extends Mage_Adminhtml_Controller_Action
 {
     public function indexAction()
     {
@@ -25,7 +25,7 @@ class Tecnocom_Webservices_Adminhtml_ErrorsController extends Mage_Adminhtml_Con
      
         // Get id if available
         $id  = $this->getRequest()->getParam('id');
-        $model = Mage::getModel('tecnocom_webservices/webservices');
+        $model = Mage::getModel('sminmlc_webservices/webservices');
      
         if ($id) {
             // Load record
@@ -47,11 +47,11 @@ class Tecnocom_Webservices_Adminhtml_ErrorsController extends Mage_Adminhtml_Con
             $model->setData($data);
         }  
      
-        Mage::register('tecnocom_webservices', $model);
+        Mage::register('sminmlc_webservices', $model);
      
         $this->_initAction()
             ->_addBreadcrumb($id ? $this->__('Edit errors') : $this->__('New errors'), $id ? $this->__('Edit errors') : $this->__('New errors'))
-            ->_addContent($this->getLayout()->createBlock('tecnocom_webservices/adminhtml_errors_edit')->setData('action', $this->getUrl('*/*/save')))
+            ->_addContent($this->getLayout()->createBlock('sminmlc_webservices/adminhtml_errors_edit')->setData('action', $this->getUrl('*/*/save')))
             ->renderLayout();
     }
     
@@ -61,7 +61,7 @@ class Tecnocom_Webservices_Adminhtml_ErrorsController extends Mage_Adminhtml_Con
      
         // Get id if available
         $id  = $this->getRequest()->getParam('id');
-        $model = Mage::getModel('tecnocom_webservices/webservices');
+        $model = Mage::getModel('sminmlc_webservices/webservices');
      
         if ($id) {
             // Load record
@@ -84,7 +84,7 @@ class Tecnocom_Webservices_Adminhtml_ErrorsController extends Mage_Adminhtml_Con
     public function saveAction()
     {
         if ($postData = $this->getRequest()->getPost()) {
-            $model = Mage::getSingleton('tecnocom_webservices/webservices');
+            $model = Mage::getSingleton('sminmlc_webservices/webservices');
             $model->setData($postData);
  
             try {
@@ -109,7 +109,7 @@ class Tecnocom_Webservices_Adminhtml_ErrorsController extends Mage_Adminhtml_Con
      
     public function messageAction()
     {
-        $data = Mage::getModel('tecnocom_webservices/webservices')->load($this->getRequest()->getParam('id'));
+        $data = Mage::getModel('sminmlc_webservices/webservices')->load($this->getRequest()->getParam('id'));
         echo $data->getContent();
     }
      
@@ -123,7 +123,7 @@ class Tecnocom_Webservices_Adminhtml_ErrorsController extends Mage_Adminhtml_Con
     protected function _initAction()
     {
         $this->loadLayout()
-            ->_setActiveMenu('tecnocom_webservices_errors')
+            ->_setActiveMenu('sminmlc_webservices_errors')
             ->_title($this->__('EWSlog'))
             ->_addBreadcrumb($this->__(''), $this->__('EWSlog'));
          
