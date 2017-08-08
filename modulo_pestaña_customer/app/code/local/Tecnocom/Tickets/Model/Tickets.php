@@ -6,11 +6,11 @@
  * and open the template in the editor.
  */
 
-class Tecnocom_Tickets_Model_Tickets extends Mage_Core_Model_Abstract
+class Sminmlc_Tickets_Model_Tickets extends Mage_Core_Model_Abstract
 {
     protected function _construct()
     {
         parent::_construct();
-        $this->_init('tecnocom_tickets/tickets');
+        $this->_init('sminmlc_tickets/tickets');
     }
 }
