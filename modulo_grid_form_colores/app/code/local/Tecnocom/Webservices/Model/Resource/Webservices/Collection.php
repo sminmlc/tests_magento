@@ -6,11 +6,11 @@
  * and open the template in the editor.
  */
   
-class Tecnocom_Webservices_Model_Resource_Webservices_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract
+class Sminmlc_Webservices_Model_Resource_Webservices_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract
 {
     public function _construct()
     {
         //parent::__construct();
-        $this->_init('tecnocom_webservices/webservices');
+        $this->_init('sminmlc_webservices/webservices');
     }
 }
