@@ -1,80 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <modules>
-        <Tecnocom_Webservices>
+        <Sminmlc_Webservices>
             <version>0.1.0</version>
-        </Tecnocom_Webservices>
+        </Sminmlc_Webservices>
     </modules>
     <global>
         <helpers>
-            <tecnocom_webservices>
-                <class>Tecnocom_Webservices_Helper</class>
-            </tecnocom_webservices>
+            <sminmlc_webservices>
+                <class>Sminmlc_Webservices_Helper</class>
+            </sminmlc_webservices>
         </helpers>
         <models>
-            <tecnocom_webservices>
-                <class>Tecnocom_Webservices_Model</class>
-                <resourceModel>tecnocom_webservices_resource</resourceModel>
-            </tecnocom_webservices>
-            <tecnocom_webservices_resource>
-                <class>Tecnocom_Webservices_Model_Resource</class>
+            <sminmlc_webservices>
+                <class>Sminmlc_Webservices_Model</class>
+                <resourceModel>sminmlc_webservices_resource</resourceModel>
+            </sminmlc_webservices>
+            <sminmlc_webservices_resource>
+                <class>Sminmlc_Webservices_Model_Resource</class>
                 <entities>
                     <webservices>
-                        <table>tecnocom_webservices_log_error</table>
+                        <table>sminmlc_webservices_log_error</table>
                     </webservices>
                 </entities>
-            </tecnocom_webservices_resource>
+            </sminmlc_webservices_resource>
         </models>
         <resources>
-            <tecnocom_webservices_setup>
+            <sminmlc_webservices_setup>
                 <setup>
-                    <module>Tecnocom_Webservices</module>
+                    <module>Sminmlc_Webservices</module>
                 </setup>
                 <connection>
                     <use>core_setup</use>
                 </connection>
-            </tecnocom_webservices_setup>
+            </sminmlc_webservices_setup>
         </resources>
         <events>
             <sales_order_place_after>
                 <observers>
-                    <tecnocom_webservices>
-                        <class>tecnocom_webservices/observer</class>
+                    <sminmlc_webservices>
+                        <class>sminmlc_webservices/observer</class>
                         <method>exportOrderCcf</method>
-                    </tecnocom_webservices>
+                    </sminmlc_webservices>
                 </observers>
             </sales_order_place_after>
             <checkout_onepage_controller_success_action>
                 <observers>
-                    <tecnocom_webservices>
+                    <sminmlc_webservices>
                         <type>singleton</type>
-                        <class>tecnocom_webservices/observer</class>
+                        <class>sminmlc_webservices/observer</class>
                         <method>updateOrderSuccessCcf</method>
-                    </tecnocom_webservices>                    
+                    </sminmlc_webservices>                    
                 </observers>
             </checkout_onepage_controller_success_action>
             <checkout_onepage_controller_failure_action>
                 <observers>
-                    <tecnocom_webservices>
+                    <sminmlc_webservices>
                         <type>singleton</type>
-                        <class>tecnocom_webservices/observer</class>
+                        <class>sminmlc_webservices/observer</class>
                         <method>updateOrderFailureCcf</method>
-                    </tecnocom_webservices>                    
+                    </sminmlc_webservices>                    
                 </observers>
             </checkout_onepage_controller_failure_action>
 			<export_errors>
 				<observers>
-                    <tecnocom_webservices>
-                        <class>tecnocom_webservices/observer</class>
+                    <sminmlc_webservices>
+                        <class>sminmlc_webservices/observer</class>
                         <method>exportarWebserviceLog</method>
-                    </tecnocom_webservices>                    
+                    </sminmlc_webservices>                    
                 </observers>
 			</export_errors>	
         </events>
      <blocks>
-          <tecnocom_webservices>
-            <class>Tecnocom_Webservices_Block</class>
-          </tecnocom_webservices>
+          <sminmlc_webservices>
+            <class>Sminmlc_Webservices_Block</class>
+          </sminmlc_webservices>
         </blocks>
         <!-- FIN Block Tecnocom_Webservices -->
     </global>
@@ -87,7 +87,7 @@
                 <args>
                     <!-- This is how we load our Adminhtml controllers -->
                     <modules>
-                        <Tecnocom_Webservices before="Mage_Adminhtml">Tecnocom_Webservices_Adminhtml</Tecnocom_Webservices>
+                        <Sminmlc_Webservices before="Mage_Adminhtml">Sminmlc_Webservices_Adminhtml</Sminmlc_Webservices>
                     </modules>
                 </args>
             </adminhtml>
@@ -97,13 +97,13 @@
     <adminhtml>
         <layout>
             <updates>
-                <tecnocom_webservices>
+                <sminmlc_webservices>
                     <!--
                     We again keep a nice naming convention and make our module upgrade proof by placing it in a separate folder
                     - Since we are in the adminhtml node, this will look for the XML file in the app/design/adminhtml/default/default root folder
                     -->
-                    <file>tecnocom/webservices.xml</file>
-                </tecnocom_webservices>
+                    <file>sminmlc/webservices.xml</file>
+                </sminmlc_webservices>
             </updates>
         </layout>
     </adminhtml>
@@ -111,14 +111,14 @@
     <!-- Cron exportarWebserviceLog -->
     <crontab>
         <jobs>
-            <tecnocom_webservices>
+            <sminmlc_webservices>
                 <schedule>
                     <cron_expr>* 7 * * *</cron_expr>
                 </schedule>
                 <run>
-                    <model>tecnocom_webservices/observer::exportarWebserviceLog</model>
+                    <model>sminmlc_webservices/observer::exportarWebserviceLog</model>
                 </run>
-            </tecnocom_webservices>
+            </sminmlc_webservices>
         </jobs>
     </crontab>
     <!-- FIN Cron exportarWebserviceLog -->
