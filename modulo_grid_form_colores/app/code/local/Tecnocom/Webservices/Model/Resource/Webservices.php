@@ -6,10 +6,10 @@
  * and open the template in the editor.
  */
 
-class Tecnocom_Webservices_Model_Resource_Webservices extends Mage_Core_Model_Mysql4_Abstract
+class Sminmlc_Webservices_Model_Resource_Webservices extends Mage_Core_Model_Mysql4_Abstract
 {
     public function _construct()
     {  
-        $this->_init('tecnocom_webservices/webservices', 'id');
+        $this->_init('sminmlc_webservices/webservices', 'id');
     }
 } 
