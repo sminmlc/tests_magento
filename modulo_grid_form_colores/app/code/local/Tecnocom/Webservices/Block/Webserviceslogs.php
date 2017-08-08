@@ -1,10 +1,10 @@
 <?php
-class Tecnocom_Webservices_Block_Webserviceslogs extends Mage_Core_Block_Template
+class Sminmlc_Webservices_Block_Webserviceslogs extends Mage_Core_Block_Template
 {
 	//Return TOTAL last errors in logs from yesterday
     public function getLatestLogs()
     {
-    	$model = Mage::getModel('tecnocom_webservices/webservices');
+    	$model = Mage::getModel('sminmlc_webservices/webservices');
         $collection = $model->getCollection()->addFieldToFilter('date', array('from' => $this->yesterday(), 'to' => date('Y-m-d h:i:s')));
 		return $collection;
     }
