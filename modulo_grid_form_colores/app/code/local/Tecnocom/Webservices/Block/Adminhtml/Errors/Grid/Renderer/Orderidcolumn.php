@@ -1,5 +1,5 @@
 <?php
-class Tecnocom_Webservices_Block_Adminhtml_Errors_Grid_Renderer_Orderidcolumn extends Mage_Adminhtml_Block_Widget_Grid_Column_Renderer_Abstract
+class Sminmlc_Webservices_Block_Adminhtml_Errors_Grid_Renderer_Orderidcolumn extends Mage_Adminhtml_Block_Widget_Grid_Column_Renderer_Abstract
 {
     public function render(Varien_Object $row) {
         $value =  $row->getData($this->getColumn()->getIndex());
