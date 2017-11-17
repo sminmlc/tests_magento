@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Sminmlc_Validation>
+            <version>0.1.0</version>
+        </Sminmlc_Validation>
+    </modules>
+
+    <global>
+        <models>
+            <sminmlc_validation>
+                <class>Sminmlc_Validation_Model</class>
+            </sminmlc_validation>
+        </models>
+        <helpers>
+            <sminmlc_validation>
+                <class>Sminmlc_Validation_Helper</class>
+            </sminmlc_validation>
+        </helpers>
+    </global>
+</config>

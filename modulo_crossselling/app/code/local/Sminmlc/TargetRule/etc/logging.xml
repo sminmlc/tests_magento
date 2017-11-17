@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author    Marc López - Sminmlc
+ * @package     Sminmlc_TargetRule
+ */
+-->
+<logging>
+    <sminmlc_targetrule translate="label">
+        <label>Rule-Based Product Relations</label>
+        <expected_models>
+            <sminmlc_targetrule__rule/>
+        </expected_models>
+        <actions>
+            <adminhtml_targetrule_edit>
+                <action>view</action>
+            </adminhtml_targetrule_edit>
+
+            <adminhtml_targetrule_save>
+                <action>save</action>
+                <skip_on_back>
+                    <adminhtml_targetrule_edit />
+                </skip_on_back>
+            </adminhtml_targetrule_save>
+
+            <adminhtml_targetrule_delete>
+                <action>delete</action>
+            </adminhtml_targetrule_delete>
+        </actions>
+    </sminmlc_targetrule>
+</logging>

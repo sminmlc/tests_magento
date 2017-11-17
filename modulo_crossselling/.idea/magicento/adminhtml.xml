@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config><menu>
+        <catalog>
+            <children>
+                <targetrule translate="title" module="tecnocom_targetrule">
+                    <title>Rule-Based Product Relations</title>
+                    <action>adminhtml/targetrule/</action>
+                    <sort_order>35</sort_order>
+                </targetrule>
+            </children>
+        </catalog>
+    </menu><acl>
+        <resources>
+            <admin>
+                <children>
+                    <catalog>
+                        <children>
+                            <targetrule translate="title">
+                                <title>Rule-Based Product Relations</title>
+                            </targetrule>
+                        </children>
+                    </catalog>
+                </children>
+            </admin>
+        </resources>
+    </acl></config>

@@ -1,0 +1,123 @@
+<?php
+/**
+ Added by Marc López - Tecnocom
+ Date 16/11/2017
+ */
+?>
+<?php
+/**
+ * Cart cross sell items template
+ *
+ * @see Mage_Checkout_Block_Cart_Crosssell
+ */
+?>
+<?php if($this->getItemCount()): ?>
+<div class="crosssell">
+    <h2><?php echo $this->__('Based on your selection, you may be interested in the following items:') ?></h2>
+    <ol class="box-content mini-products-list">
+
+    <?php $i=0;foreach ($this->getItems() as $_item): ?>
+            <?php if($i++ == 3) break; ?>
+
+        <li class="item<?php if (($i - 1) % $this->getColumnCount() == 0):?> first<?php elseif ($i % $this->getColumnCount() == 0): ?> last<?php endif; ?>">
+            <div class="product-title">
+                <a class="title-brand" href="#" title="Brand">
+                    <?php echo $this->__($_item->getAttributeText('manufacturer'))?>
+                </a>
+                <a class="link-wishlist" href="<?php echo $this->getAddToWishlistUrl($_item) ?>">
+                    <span class="btn-wishlist"></span>
+                </a>
+                <?php if($_compareUrl=$this->getAddToCompareUrl($_item)): ?>
+                    <a href="<?php echo $_compareUrl ?>" class="link-compare">
+                        <span class="btn-compare"></span>
+                    </a>
+                <?php endif; ?>
+
+                <h3 class="product-name">
+                    <a href="<?php echo $this->getProductUrl($_item) ?>"><?php echo $this->escapeHtml($_item->getName()) ?></a>
+                </h3>
+            </div>
+            <a href="<?php echo $this->getProductUrl($_item) ?>" class="product-collection-image-68">
+                <?php /*<img src="<?php echo $this->getSkinUrl('images/related_product_image.jpg') ?>" alt="<?php echo $this->escapeHtml($_item->getName()) ?>" title="<?php echo $this->escapeHtml($_item->getName()) ?>" /> */ ?>
+                <img src="<?php echo $this->helper('catalog/image')->init($_item, 'small_image')->resize(260) ?>" alt="<?php echo $this->escapeHtml($_item->getName()) ?>" title="<?php echo $this->escapeHtml($_item->getName()) ?>" />
+            </a>
+            <div class="box-product-sidebar border-left">
+                <div class="child">
+                    <?php if( Mage::helper('silk_general')->isInternetStore() ): ?>
+
+                        <?php
+                        # FINANCIACION CON TABLA DE AMORTIZACION
+                        $allProductfundings = $_item->load($_item->getId())->allProductfundings();
+                        $modelFinanciacion = $allProductfundings[ key( $allProductfundings )  ];
+
+                        $tax_display_type = Mage::getStoreConfig('tax/display/type', Mage::app()->getStore());
+                        $taxes = false;
+                        if($tax_display_type==2){
+                            $taxes = true;
+                        }
+
+                        $finalPrice = $this->helper('tax')->getPrice($_item, $_item->getFinalPrice(), $taxes );
+
+                        $originalPrice = $_item->getPrice();
+                        //$finalPrice = $_item->getFinalPrice();
+                        ?>
+                        <?php if( $modelFinanciacion->numCuotas > 0) : $amortizacion = $modelFinanciacion->amortizacion; ?>
+                            <?php $number = explode(',', $modelFinanciacion->numberFormat( $modelFinanciacion->importeCuota ));?>
+                            <p class="font-fbi font-color-00">
+                                <span class="price-numbers"><?php echo $number[0] ?></span>
+                                <span class="price-coma">,</span>
+                                <span class="price-decimals"><?php echo $number[1] ?></span>
+                                <span class="price-coin">€</span>
+                            </p>
+                            <p  class="font-2">
+                                <?php
+                                echo sprintf($this->__('Monthly %s fees') .'<sup>'.$modelFinanciacion->getOfferedBy().'</sup>'. '</br></br>' .
+                                    $this->__('Importe total a plazos:') . ' %s€ </br></br>',
+                                    $modelFinanciacion->numCuotas,
+                                    $modelFinanciacion->numberFormat( $amortizacion['total']['paid']))
+                                ?>
+                                TAE <?php echo $modelFinanciacion->numberFormat( $modelFinanciacion->tae ) ?> %
+                            </p>
+                            <div >
+                                <?php if($finalPrice < $originalPrice): ?>
+
+                                    <span class="price throught"><?php echo $this->__('PVP')?></span><span class="price throught"><?php echo Mage::helper('core')->formatPrice($originalPrice);?></span>
+                                    <span class="price-red"><?php echo $this->__('PVP')?></span><span class="price-red"><?php echo Mage::helper('core')->formatPrice($finalPrice);?></span>
+                                <?php else: ?>
+                                    <?php echo $this->__('PVP').' '.$this->helper('core')->formatPrice($finalPrice);?>
+                                <?php endif ?>
+                            </div>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <div class="cleared"></div>
+            <div class="product-details">
+                <div>
+                    <span class="info-payment"><?php echo $this->__('Check the product sheet to see all payment options')?></span>
+                </div>
+                <div class="box-product-sidebar-button" >
+                    <?php if(!$_item->canConfigure() && $_item->isSaleable()): ?>
+                        <a title="<?php echo $this->__('Buy') ?>" onclick="setLocation('<?php echo $_item->getProductUrl() ?>')"><?php echo $this->__('Buy') ?></a>
+                    <?php elseif($_item->getStockItem() && $_item->getStockItem()->getIsInStock()): ?>
+                        <a title="<?php echo $this->__('Buy') ?>" class="button" href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->__('Buy') ?></a>
+                    <?php else: ?>
+                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                    <?php endif; ?>
+                </div>
+                <div class="cleared"></div>
+                <!-- <?php echo $this->getPriceHtml($_item, true, '-related') ?>
+                    <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                        <p><a href="<?php echo $this->getAddToWishlistUrl($_item) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></p>
+                    <?php endif; ?>
+                <div class="box-product-sidebar-button">
+                    <a title="Buy" onclick="setLocation('http://localhost/promocaixa/index.php/portatil-15-hp-15-d003ss-1.html')">Comprar</a>
+                </div>
+                </div>-->
+            </div>
+        </li>
+    <?php endforeach; ?>
+    </ol>
+    <?php // <script type="text/javascript">decorateList('crosssell-products-list', 'none-recursive')</script> ?>
+</div>
+<?php endif; ?>
