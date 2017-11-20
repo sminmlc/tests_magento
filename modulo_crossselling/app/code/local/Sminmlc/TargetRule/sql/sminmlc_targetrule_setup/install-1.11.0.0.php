@@ -121,28 +121,17 @@ $installer->getConnection()->createTable($table);
 /**
  * Create table 'sminmlc_targetrule/customersegment'
  */
-$table = $installer->getConnection()
-    ->newTable($installer->getTable('sminmlc_targetrule/customersegment'))
-    ->addColumn('rule_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
-        'unsigned'  => true,
-        'nullable'  => false,
-        'primary'   => true,
-        ), 'Rule Id')
-    ->addColumn('segment_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
-        'unsigned'  => true,
-        'nullable'  => false,
-        'primary'   => true,
-        ), 'Segment Id')
-    ->addIndex($installer->getIdxName('sminmlc_targetrule/customersegment', array('segment_id')),
-        array('segment_id'))
-    ->addForeignKey($installer->getFkName('sminmlc_targetrule/customersegment', 'rule_id', 'sminmlc_targetrule/rule', 'rule_id'),
-        'rule_id', $installer->getTable('sminmlc_targetrule/rule'), 'rule_id',
-        Varien_Db_Ddl_Table::ACTION_CASCADE, Varien_Db_Ddl_Table::ACTION_CASCADE)
-    ->addForeignKey($installer->getFkName('sminmlc_targetrule/customersegment', 'segment_id', 'sminmlc_customersegment/segment', 'segment_id'),
-        'segment_id', $installer->getTable('sminmlc_customersegment/segment'), 'segment_id',
-        Varien_Db_Ddl_Table::ACTION_CASCADE, Varien_Db_Ddl_Table::ACTION_CASCADE)
-    ->setComment('Sminmlc Targetrule Customersegment');
-$installer->getConnection()->createTable($table);
+$installer->run("
+CREATE TABLE IF NOT EXISTS `sminmlc_targetrule_customersegment` (
+  `rule_id` int(10) unsigned NOT NULL COMMENT 'Rule Id',
+  `segment_id` int(10) unsigned NOT NULL COMMENT 'Segment Id',
+  PRIMARY KEY (`rule_id`,`segment_id`),
+  KEY `IDX_ENTERPRISE_TARGETRULE_CUSTOMERSEGMENT_SEGMENT_ID` (`segment_id`),
+  CONSTRAINT `FK_3F24241CB17AA24EC0461050E89576BE` FOREIGN KEY (`segment_id`) REFERENCES `sminmlc_customersegment_segment` (`segment_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_ENT_TARGETRULE_CSTRSEGMENT_RULE_ID_ENT_TARGETRULE_RULE_ID` FOREIGN KEY (`rule_id`) REFERENCES `sminmlc_targetrule` (`rule_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Enterprise Targetrule Customersegment';
+");
+
 
 /**
  * Create table 'sminmlc_targetrule/product'
